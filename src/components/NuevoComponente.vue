@@ -1,12 +1,14 @@
 <template>
 <div class="container">
-    <h1 class="my-3">{{message1}}</h1>
+    <h1 class="my-3">{{msssg}}</h1>
     <form action>
         <b-form-input v-model="item" placeholder="Ingresa aqui una tarea nueva"></b-form-input>
     </form>
     <b-button variant="success" class="m-1" @click="add">Add</b-button>
+    
+    <ComponentHijo @accion="sustract"/>
 
-    <b-button variant="danger" class="m-1" @click="sustract">Sustract</b-button>
+    
     <ul v-for="item of items">
         <li>{{ item }}</li>
     </ul>
@@ -14,14 +16,19 @@
 </template>
 
 <script>
+import ComponentHijo from './ComponentHijo'
+
 export default {
     name: "NuevoComponente",
+    components:{
+        ComponentHijo,
+    },
     props: {
         msssg: String,
     },
     data() {
         return {
-            message1: "Desafio de uso con props en Vue",
+            msssg: "Desafio de uso con props en Vue",
 
             items: [],
             item: "",
